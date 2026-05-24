@@ -33,16 +33,65 @@ By using three variable K-Map, we can get the simplified expression for next sta
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=JQ(t)′+K′Q(t)Q(t+1)=JQ(t)′+K′Q(t)
 
 **Procedure**
-
-/* write all the steps invloved */
+1.Open Quartus Prime software and create a new project.
+2.Write the Verilog HDL program for the JK flip-flop using if-else statements.
+3.Save the program and compile the design to check for errors.
+4.Generate the RTL schematic diagram for the designed circuit.
+5.Create input and output nodes and apply different combinations of J, K, clock, and reset signals.
+6.Run the simulation and generate the timing waveform.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+Developed by: Sujin M L
+
+RegisterNumber: 212225040435 
+
+```
+module DE3(q, qb,j,k,clock,reset);
+    input j,k,clock,reset;
+    output reg q, qb;
+	 
+always @ (posedge (clock))
+
+    begin 
+        if (!reset)
+            begin
+               q <= q;
+               qb <=qb;
+            end   
+        
+else
+ //Write logic for JK flipflop using if else statement for four conditions
+
+begin
+               if (j == 0 && k == 0)
+                    begin
+                    q <= q;
+                    qb <= qb;
+                    end 
+		else if (j != k)
+                    begin
+                    q <= j;
+                    qb <= k;
+                    end
+               else if (j == 1 && k == 1) 
+                    begin 
+                    q <= ~q; 
+                    qb <= ~qb; 
+                    end 
+            end
+end  
+endmodule
+```
+
 
 **RTL LOGIC FOR FLIPFLOPS**
+<img width="1919" height="1079" alt="Screenshot 2026-05-24 082800" src="https://github.com/user-attachments/assets/a40916a3-9ccd-4dbc-a432-dacb2c38b2d3" />
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1918" height="1079" alt="Screenshot 2026-05-24 082946" src="https://github.com/user-attachments/assets/a68808fb-bd07-4390-8371-ba6553911696" />
+
 
 **RESULTS**
+Thus, the JK flip-flop was successfully implemented using Verilog HDL in Quartus Prime and its functional table was verified using the generated timing waveforms.
